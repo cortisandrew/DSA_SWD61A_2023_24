@@ -1,6 +1,6 @@
 ﻿using GuessingGame;
 
-List<int> problemSizes = new List<int>() { 100, 1000, 10000, 100000 };
+List<int> problemSizes = new List<int>() { 100, 1000, 10000, 100000};
 int REPETITIONS = 1000;
 
 Console.WriteLine("Algorithm A:");
