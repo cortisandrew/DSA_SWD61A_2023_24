@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reference_and_Value_Types", "Reference_and_Value_Types\Reference_and_Value_Types.csproj", "{64824439-D9B5-46E7-B4A8-0AFA9DF30023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuessingGame", "GuessingGame\GuessingGame.csproj", "{C71C6C90-0077-45C8-8B66-30DDC97EFA2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuessingGame", "GuessingGame\GuessingGame.csproj", "{C71C6C90-0077-45C8-8B66-30DDC97EFA2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorImplementations", "VectorImplementations\VectorImplementations.csproj", "{4B6ED8C8-C493-4DBB-8509-E7EF1B9D6AE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C71C6C90-0077-45C8-8B66-30DDC97EFA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C71C6C90-0077-45C8-8B66-30DDC97EFA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C71C6C90-0077-45C8-8B66-30DDC97EFA2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6ED8C8-C493-4DBB-8509-E7EF1B9D6AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6ED8C8-C493-4DBB-8509-E7EF1B9D6AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6ED8C8-C493-4DBB-8509-E7EF1B9D6AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6ED8C8-C493-4DBB-8509-E7EF1B9D6AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
