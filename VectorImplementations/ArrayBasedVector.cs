@@ -76,7 +76,22 @@ namespace VectorImplementations
             {
                 // The array is full!
                 // You need to handle this (later)...
-                throw new NotImplementedException();
+
+                // create a new larger array
+                // during this unit, I will not explain why * 2
+                // but it is a good choice (this be explained in DSA II)
+                T[] newArray = new T[V.Length * 2];
+
+                // V.CopyTo(newArray, 0); // copy everything from the old array to the new array
+                // equivalently:
+                for (int i = 0; i < V.Length; i++)
+                {
+                    // go over each element in the old array
+                    // copy it to the new array
+                    newArray[i] = V[i];
+                }
+
+                V = newArray; // replace the array with the new array and the old "V" can now be garbage collected
             }
 
             for (int i = size - 1; i >= rank; i--)
@@ -138,7 +153,7 @@ namespace VectorImplementations
                 V[i] = V[i + 1];
             }
 
-            V[size - 1] = default;
+            V[size - 1] = default!;
 
             size--;
             return removedValue;

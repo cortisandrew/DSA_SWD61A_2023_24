@@ -4,7 +4,7 @@ using VectorImplementations;
 Console.WriteLine("Array Based Vector");
 
 
-ArrayBasedVector<string> arrayBasedVector = new ArrayBasedVector<string>();
+ArrayBasedVector<string> arrayBasedVector = new ArrayBasedVector<string>(4);
 arrayBasedVector.Append("A");
 arrayBasedVector.Append("B");
 arrayBasedVector.Append("D");
