@@ -24,6 +24,8 @@ Console.WriteLine(arrayBasedVector.RemoveAtRank(3));
 Console.WriteLine();
 */
 
+/*
+
 ArrayBasedVector<int> abv = new ArrayBasedVector<int>();
 
 Stopwatch sw = new Stopwatch();
@@ -133,6 +135,57 @@ foreach (int problemSize in problemSizes)
         Console.WriteLine($"{problemSize}, {(double)sw.ElapsedTicks / repetitions}");
     }
 }
+*/
+
+// Create an instance of nodeA.. right now, it does not have a next.
+Node<string> nodeA = new Node<string>("A", null);
+
+// Create a node C, this will be at the end of the linked list
+Node<string> nodeC = new Node<string>("C", null);
+// Create a node B, with node C behind it
+Node<string> nodeB = new Node<string>("B", nodeC);
+
+// Update node A to point to Node B
+nodeA.Next = nodeB;
+
+Node<string>? cursor = nodeA;
+while (cursor != null)
+{
+    Console.Write(cursor);
+    Console.Write(" -> ");
+    cursor = cursor.Next;
+}
+Console.WriteLine();
+
+Node<string> nodeE = new Node<string>("E", null);
+nodeC.Next = nodeE;
+
+cursor = nodeA;
+while (cursor != null)
+{
+    Console.Write(cursor);
+    Console.Write(" -> ");
+    cursor = cursor.Next;
+}
+Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
+Console.WriteLine();
+
+Node<string> nodeD = new Node<string>("D", nodeE);
+nodeC.Next = nodeD;
+
+
+cursor = nodeA;
+while (cursor != null)
+{
+    Console.Write(cursor);
+    Console.Write(" -> ");
+    cursor = cursor.Next;
+}
+Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
+Console.WriteLine();
 
 
 
+
+
+Console.ReadKey();
