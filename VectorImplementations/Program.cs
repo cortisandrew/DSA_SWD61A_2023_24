@@ -137,55 +137,73 @@ foreach (int problemSize in problemSizes)
 }
 */
 
-// Create an instance of nodeA.. right now, it does not have a next.
-Node<string> nodeA = new Node<string>("A", null);
+// NodeTest();
 
-// Create a node C, this will be at the end of the linked list
-Node<string> nodeC = new Node<string>("C", null);
-// Create a node B, with node C behind it
-Node<string> nodeB = new Node<string>("B", nodeC);
+SinglyLinkedList<string> linkedList = new SinglyLinkedList<string>();
+linkedList.InsertFirst("B"); // Case 1: list is empty
+Console.WriteLine(linkedList);
+linkedList.InsertFirst("A"); // Case 2: list is NOT empty
+Console.WriteLine(linkedList);
 
-// Update node A to point to Node B
-nodeA.Next = nodeB;
-
-Node<string>? cursor = nodeA;
-while (cursor != null)
-{
-    Console.Write(cursor);
-    Console.Write(" -> ");
-    cursor = cursor.Next;
-}
-Console.WriteLine();
-
-Node<string> nodeE = new Node<string>("E", null);
-nodeC.Next = nodeE;
-
-cursor = nodeA;
-while (cursor != null)
-{
-    Console.Write(cursor);
-    Console.Write(" -> ");
-    cursor = cursor.Next;
-}
-Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
-Console.WriteLine();
-
-Node<string> nodeD = new Node<string>("D", nodeE);
-nodeC.Next = nodeD;
+linkedList.Append("C");
+linkedList.Append("D");
+Console.WriteLine(linkedList);
 
 
-cursor = nodeA;
-while (cursor != null)
-{
-    Console.Write(cursor);
-    Console.Write(" -> ");
-    cursor = cursor.Next;
-}
-Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
-Console.WriteLine();
-
-
-
+Console.WriteLine(linkedList.RemoveHead());
+Console.WriteLine(linkedList.RemoveHead());
+Console.WriteLine(linkedList.RemoveHead());
+Console.WriteLine(linkedList.RemoveHead());
 
 
 Console.ReadKey();
+
+static void NodeTest()
+{
+    // Create an instance of nodeA.. right now, it does not have a next.
+    Node<string> nodeA = new Node<string>("A", null);
+
+    // Create a node C, this will be at the end of the linked list
+    Node<string> nodeC = new Node<string>("C", null);
+    // Create a node B, with node C behind it
+    Node<string> nodeB = new Node<string>("B", nodeC);
+
+    // Update node A to point to Node B
+    nodeA.Next = nodeB;
+
+    Node<string>? cursor = nodeA;
+    while (cursor != null)
+    {
+        Console.Write(cursor);
+        Console.Write(" -> ");
+        cursor = cursor.Next;
+    }
+    Console.WriteLine();
+
+    Node<string> nodeE = new Node<string>("E", null);
+    nodeC.Next = nodeE;
+
+    cursor = nodeA;
+    while (cursor != null)
+    {
+        Console.Write(cursor);
+        Console.Write(" -> ");
+        cursor = cursor.Next;
+    }
+    Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
+    Console.WriteLine();
+
+    Node<string> nodeD = new Node<string>("D", nodeE);
+    nodeC.Next = nodeD;
+
+
+    cursor = nodeA;
+    while (cursor != null)
+    {
+        Console.Write(cursor);
+        Console.Write(" -> ");
+        cursor = cursor.Next;
+    }
+    Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
+    Console.WriteLine();
+}

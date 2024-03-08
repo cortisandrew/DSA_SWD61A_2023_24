@@ -12,6 +12,19 @@ namespace VectorImplementations
 
         private Node<T>? next;
 
+
+        public T Element { 
+            get { return element; }
+            private set { element = value; }
+        }
+
+        // previous is used for doubly linked lists...
+        // private Node<T>? previous;
+
+        // Sometimes nodes can store a reference to the linked list that they belong to...
+        // Will not be used during our lectures
+        // private SinglyLinkedList<T> parent;
+
         public Node<T>? Next
         {
             get { return next; }
