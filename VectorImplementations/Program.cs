@@ -141,6 +141,20 @@ foreach (int problemSize in problemSizes)
 
 // SinglyLinkedListTest();
 
+SinglyLinkedList<string> singlyLinkedList = new SinglyLinkedList<string>();
+singlyLinkedList.Append("A");
+singlyLinkedList.Append("B");
+singlyLinkedList.Append("D");
+singlyLinkedList.Append("E");
+
+Node<string> cursor = singlyLinkedList.GetFirstNode();
+cursor = cursor.Next; // B
+
+Console.WriteLine(singlyLinkedList);
+
+singlyLinkedList.InsertAfter(cursor, "C");
+Console.WriteLine(singlyLinkedList);
+
 QueueUsingSinglyLinkedLists<string> myQueue = new QueueUsingSinglyLinkedLists<string>();
 
 myQueue.Enqueue("A");

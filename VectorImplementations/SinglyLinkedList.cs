@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -45,6 +46,18 @@ namespace VectorImplementations
 
             // head exists
             return head.Element;
+        }
+
+        public Node<T> GetFirstNode()
+        {
+            if (head == null) // || size == 0
+            {
+                // there are no elements stored!
+                throw new InvalidOperationException("You can't get the first element when the linked list is empty!");
+            }
+
+            // head exists
+            return head;
         }
 
         public void Append(T element)
@@ -160,6 +173,70 @@ namespace VectorImplementations
 
         }
 
+        public void InsertAfter(Node<T> currentNode, T element)
+        {
+            // Validation
+            if (currentNode == null)
+            {
+                throw new ArgumentNullException("currentNode", "Cannot insert after a NULL!");
+            }
 
+            // Step 0
+            if (currentNode == tail)
+            {
+                // We know how to insert after the tail: this is the Append
+                Append(element);
+                return;
+            }
+
+            // Step 1 - build new info
+            Node<T> newNode = new Node<T>(element, currentNode.Next);
+
+            // Step 2 - update existing references
+            currentNode.Next = newNode;
+
+            // Step 3 - Increment size
+            Size++;
+        }
+
+        public T RemoveAfter(Node<T> currentNode)
+        {
+            // Validation
+            if (currentNode == null)
+            {
+                throw new ArgumentNullException("currentNode", "Cannot remove after a NULL!");
+            }
+
+            if (currentNode == tail)
+            {
+                throw new ArgumentException("currentNode", "You cannot remove after the last node!");
+            }
+
+            if (currentNode.Next == null)
+            {
+                throw new ApplicationException("There is some bug in the code! The currentNode.Next is null when the currentNode is NOT the tail!");
+            }
+
+            // Main code here...
+            Node<T> nodeToRemove = currentNode.Next; // Exclamation mark causes warning to switch off. i.e. I know about this and we have our validation
+            T elementToReturn = nodeToRemove.Element;
+
+            currentNode.Next = nodeToRemove.Next;
+
+            // The below is identical to the above
+            // currentNode.Next = (currentNode.Next).Next;
+
+            // Special condition
+            // After the update above, the current node has no next element
+            // This happens if we have just removed the tail
+            // Therefore, the currentNode becomes the tail!
+            if (currentNode.Next == null)
+            {
+                tail = currentNode;
+            }
+
+            Size--;
+            return elementToReturn;
+        }
     }
 }
