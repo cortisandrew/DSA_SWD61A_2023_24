@@ -139,24 +139,65 @@ foreach (int problemSize in problemSizes)
 
 // NodeTest();
 
-SinglyLinkedList<string> linkedList = new SinglyLinkedList<string>();
-linkedList.InsertFirst("B"); // Case 1: list is empty
-Console.WriteLine(linkedList);
-linkedList.InsertFirst("A"); // Case 2: list is NOT empty
-Console.WriteLine(linkedList);
+// SinglyLinkedListTest();
 
-linkedList.Append("C");
-linkedList.Append("D");
-Console.WriteLine(linkedList);
+QueueUsingSinglyLinkedLists<string> myQueue = new QueueUsingSinglyLinkedLists<string>();
+
+myQueue.Enqueue("A");
+myQueue.Enqueue("B");
+myQueue.Enqueue("C");
+myQueue.Enqueue("D");
+myQueue.Enqueue("E");
+
+Console.WriteLine(myQueue);
+
+while (myQueue.Size > 0)
+{
+    Console.WriteLine(myQueue.Dequeue());
+}
+
+myQueue = new QueueUsingSinglyLinkedLists<string>();
+Queue_implemented_using_ABV<string> myABVQueue = new Queue_implemented_using_ABV<string>();
+
+Stopwatch myStopWatch = new Stopwatch();
+
+for (int i = 0; i < 1000000; i++)
+{
+    myStopWatch.Start();
+    myQueue.Enqueue("A");
+    myStopWatch.Stop();
+}
+
+for (int i = 0; i < 1000000; i++)
+{
+    myStopWatch.Start();
+    myQueue.Dequeue();
+    myStopWatch.Stop();
+}
+
+Console.WriteLine("Enqueueing and Dequeueing 1000000 elements using SLL takes:");
+Console.WriteLine(myStopWatch.ElapsedMilliseconds);
+
+myStopWatch.Reset();
+
+for (int i = 0; i < 1000000; i++)
+{
+    myStopWatch.Start();
+    myABVQueue.Enqueue("A");
+    myStopWatch.Stop();
+}
+
+for (int i = 0; i < 1000000; i++)
+{
+    myStopWatch.Start();
+    myABVQueue.Dequeue();
+    myStopWatch.Stop();
+}
+
+Console.WriteLine("Enqueueing and Dequeueing 1000000 elements using ABV takes:");
+Console.WriteLine(myStopWatch.ElapsedMilliseconds);
 
 
-Console.WriteLine(linkedList.RemoveHead());
-Console.WriteLine(linkedList.RemoveHead());
-Console.WriteLine(linkedList.RemoveHead());
-Console.WriteLine(linkedList.RemoveHead());
-
-
-Console.ReadKey();
 
 static void NodeTest()
 {
@@ -206,4 +247,26 @@ static void NodeTest()
     }
     Console.Write(" [F] -> [G] -> [H] -> ... [Z] -> ");
     Console.WriteLine();
+}
+
+static void SinglyLinkedListTest()
+{
+    SinglyLinkedList<string> linkedList = new SinglyLinkedList<string>();
+    linkedList.InsertFirst("B"); // Case 1: list is empty
+    Console.WriteLine(linkedList);
+    linkedList.InsertFirst("A"); // Case 2: list is NOT empty
+    Console.WriteLine(linkedList);
+
+    linkedList.Append("C");
+    linkedList.Append("D");
+    Console.WriteLine(linkedList);
+
+
+    Console.WriteLine(linkedList.RemoveHead());
+    Console.WriteLine(linkedList.RemoveHead());
+    Console.WriteLine(linkedList.RemoveHead());
+    Console.WriteLine(linkedList.RemoveHead());
+
+
+    Console.ReadKey();
 }

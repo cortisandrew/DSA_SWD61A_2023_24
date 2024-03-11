@@ -147,6 +147,11 @@ namespace VectorImplementations
             // Step ii: Update head of list
             head = head.Next;
 
+            if (head == null) // we have just removed the last element (which also happened to be the tail)
+            {
+                tail = null; // there now no elements in the linked list!
+            }
+
             // Step iii: decrement size
             Size--;
 
