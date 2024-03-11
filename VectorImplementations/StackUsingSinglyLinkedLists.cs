@@ -25,14 +25,12 @@ namespace VectorImplementations
 
         public T Pop()
         {
-            return linkedList.RemoveLast();
-            //return linkedList.RemoveHead();
+            return linkedList.RemoveHead();
         }
 
         public void Push(T elem)
         {
-            linkedList.Append(elem);
-            //linkedList.InsertFirst(elem);
+            linkedList.InsertFirst(elem);
         }
     }
 }
