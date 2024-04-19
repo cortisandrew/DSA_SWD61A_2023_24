@@ -116,5 +116,30 @@ namespace TreeProject
                 }
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (Left != null)
+            {
+                sb.AppendLine(Key.ToString() + "->" + Left.Key.ToString());
+                sb.Append(Left.ToString());
+            }
+            
+            if (Right != null)
+            {
+                sb.AppendLine(Key + "->" + Right.Key);
+                sb.Append(Right.ToString());
+            }
+
+            if (Left == null && Right == null)
+            {
+                sb.AppendLine(Key.ToString());
+            }
+
+            return sb.ToString();
+            
+        }
     }
 }

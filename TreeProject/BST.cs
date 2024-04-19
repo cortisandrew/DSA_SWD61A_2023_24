@@ -36,5 +36,19 @@ namespace TreeProject
 
             return root.Search(key);
         }
+
+        public override string ToString()
+        {
+            if (root == null)
+            {
+                return "<EMPTY>";
+            }
+            return
+                "digraph G {" + Environment.NewLine +
+                root.ToString()
+                 + Environment.NewLine + "}";
+
+
+        }
     }
 }
