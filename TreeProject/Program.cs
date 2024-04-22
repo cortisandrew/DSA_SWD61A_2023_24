@@ -9,11 +9,11 @@ namespace TreeProject
         {
             BST<string> treeOne = new BST<string>();
 
-            treeOne.AddNewChildNode(20, "Twenty");
-            treeOne.AddNewChildNode(5, "Five");
-            treeOne.AddNewChildNode(4, "Four");
-            treeOne.AddNewChildNode(10, "Ten");
-            treeOne.AddNewChildNode(22, "Twenty-Two");
+            treeOne.Add(20, "Twenty");
+            treeOne.Add(5, "Five");
+            treeOne.Add(4, "Four");
+            treeOne.Add(10, "Ten");
+            treeOne.Add(22, "Twenty-Two");
 
             Console.WriteLine("Searching for 10");
             Console.WriteLine(treeOne.Search(10));
@@ -30,13 +30,16 @@ namespace TreeProject
 
             BST<int> treeTwo = new BST<int>();
 
-            treeTwo.AddNewChildNode(1, 1);
-            treeTwo.AddNewChildNode(2, 2);
-            treeTwo.AddNewChildNode(3, 3);
-            treeTwo.AddNewChildNode(4, 4);
-            treeTwo.AddNewChildNode(5, 5);
-            treeTwo.AddNewChildNode(6, 6);
+            treeTwo.Add(1, 1);
+            treeTwo.Add(2, 2);
+            treeTwo.Add(3, 3);
+            treeTwo.Add(4, 4);
+            treeTwo.Add(5, 5);
+            treeTwo.Add(6, 6);
+            treeTwo.Add(7, 7);
+            treeTwo.Add(8, 8);
 
+            Console.WriteLine(treeTwo.ToString());
 
             Random r = new Random();
             List<int> randomNumbers = new List<int>();
@@ -52,7 +55,7 @@ namespace TreeProject
             BST<int> treeThree = new BST<int>();
             foreach (int i in randomNumbers)
             {
-                treeThree.AddNewChildNode(i, i);
+                treeThree.Add(i, i);
             }
 
             Console.WriteLine(

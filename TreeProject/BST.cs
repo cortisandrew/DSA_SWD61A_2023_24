@@ -10,7 +10,7 @@ namespace TreeProject
     {
         private Node<V>? root;
 
-        public void AddNewChildNode(int key, V value)
+        public void Add(int key, V value)
         {
             if (root == null)
             {
@@ -37,11 +37,12 @@ namespace TreeProject
             return root.Search(key);
         }
 
+        // Describes the tree using DOT language
         public override string ToString()
         {
             if (root == null)
             {
-                return "<EMPTY>";
+                return "digraph G { }";
             }
             return
                 "digraph G {" + Environment.NewLine +
