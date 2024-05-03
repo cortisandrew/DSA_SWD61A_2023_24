@@ -10,5 +10,15 @@ namespace TreeProject
     {
         public int Key { get; set; }
         public V Value { get; set; }
+
+        public override string ToString()
+        {
+            if (Value == null)
+            {
+                return $"[Key: {Key}]";
+            }
+
+            return $"[Key: {Key}, Value: {Value.ToString()}]";
+        }
     }
 }

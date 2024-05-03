@@ -13,7 +13,7 @@ namespace TreeProject
     /// i) complete
     /// ii) Heap-order (with minimum at the top)
     /// </summary>
-    public class BinaryMinHeap<V> : IMaxHeap<V>
+    public class BinaryMaxHeap<V> : IMaxHeap<V>
     {
         internal int LeftChildIndex(int parentIndex)
         {
@@ -81,7 +81,23 @@ namespace TreeProject
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Graph {");
+
+            if (list.Count > 0)
+            {
+                sb.AppendLine(list[0].Key.ToString() + ";");
+            }
+
+            for (int i = 1; i < list.Count; i++)
+            {
+                sb.AppendLine(list[ParentIndex(i)].Key + "--" + list[i].Key + ";");
+            }
+
+            sb.AppendLine("}");
+
+            return sb.ToString();
         }
     }
 }

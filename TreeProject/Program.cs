@@ -7,6 +7,24 @@ namespace TreeProject
     {
         static void Main(string[] args)
         {
+            BinaryMaxHeap<string> heap = new BinaryMaxHeap<string>();
+            heap.Add(40, "Fourty");
+            heap.Add(24, "24");
+            heap.Add(18, "18");
+            heap.Add(22, "22");
+            heap.Add(11, "11");
+            heap.Add(9, "9");
+
+            Console.WriteLine(heap.ToString());
+
+            heap.Add(42, "42");
+
+            Console.WriteLine(heap.ToString());
+
+
+
+
+            /*
             BST<string> treeOne = new BST<string>();
 
             treeOne.Add(20, "Twenty");
@@ -60,6 +78,7 @@ namespace TreeProject
 
             Console.WriteLine(
             treeThree.ToString());
+            */
         }
     }
 }
