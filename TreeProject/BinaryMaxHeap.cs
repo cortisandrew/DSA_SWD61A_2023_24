@@ -13,7 +13,7 @@ namespace TreeProject
     /// i) complete
     /// ii) Heap-order (with minimum at the top)
     /// </summary>
-    public class BinaryMinHeap<V> : IHeap<V>
+    public class BinaryMinHeap<V> : IMaxHeap<V>
     {
         internal int LeftChildIndex(int parentIndex)
         {
@@ -36,14 +36,45 @@ namespace TreeProject
         // private ArrayBasedVector<IntegerValuePair<V>> arrayBasedVector = new ArrayBasedVector<IntegerValuePair<V>>();
         private List<IntegerValuePair<V>> list = new List<IntegerValuePair<V>>();
 
-        public int Count => throw new NotImplementedException();
+        public int Count
+        {
+            get { return list.Count; }
+        }
 
         public void Add(int key, V value)
         {
-            throw new NotImplementedException();
+            // Add the new item to the list. The heap is complete but does not have the heap order
+            list.Add(new IntegerValuePair<V> { Key = key, Value = value });
+
+            // heap order may be lost at the last position (Count - 1)
+            UpHeap(list.Count - 1);
         }
 
-        public V RemoveMin()
+        private void UpHeap(int index)
+        {
+            // stopping condition: if the element is at the top (index == 0), then there is no more swapping required
+            if (index == 0)
+            {
+                // this is the root
+                return;
+            }
+
+            int parentIndex = ParentIndex(index);
+
+            if (list[parentIndex].Key < list[index].Key)
+            {
+                // we still have to fix heap-order
+                // in max-heap, larger goes on top!
+                list.Swap(index, parentIndex);
+                UpHeap(parentIndex);
+                return; // we are done!
+            }
+
+            // heap-order is restored
+            return;
+        }
+
+        public V RemoveMax()
         {
             throw new NotImplementedException();
         }

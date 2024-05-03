@@ -9,9 +9,9 @@ namespace TreeProject
     /// <summary>
     ///  This interface represents the Heap ADT.
     ///  The heap offers these methods
-    ///  It is assumed that the heap has the heap-order property with the smallest value at the top
+    ///  It is assumed that the heap has the heap-order property with the largest value at the top
     /// </summary>
-    public interface IHeap<V>
+    public interface IMaxHeap<V>
     {
         /// <summary>
         /// Returns the number of elements stored
@@ -28,8 +28,10 @@ namespace TreeProject
 
 
         /// <summary>
-        /// Removes the Value associated with the key that has the smallest value
+        /// Removes the Value associated with the key that has the largest value
         /// </summary>
-        V RemoveMin();
+        V RemoveMax();
+
+        // void IncreasePriority(int key, int newKeyValue);
     }
 }
