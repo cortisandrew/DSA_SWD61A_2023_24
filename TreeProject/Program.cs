@@ -45,7 +45,10 @@ namespace TreeProject
                 valuesToSort.Add(r.Next(0, 10000));
             }
 
+            // Average Time, Worst Case O(n log n)
+            // Best Case (all numbers have the same value) O(n)
             List<int> sortedValues = BinaryMaxHeap<int>.HeapSortDescending(valuesToSort);
+            
 
             Console.WriteLine(String.Join(", ", sortedValues));
 
