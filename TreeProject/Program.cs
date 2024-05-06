@@ -8,7 +8,7 @@ namespace TreeProject
         static void Main(string[] args)
         {
             BinaryMaxHeap<string> heap = new BinaryMaxHeap<string>();
-            heap.Add(40, "Fourty");
+            heap.Add(40, "40");
             heap.Add(24, "24");
             heap.Add(18, "18");
             heap.Add(22, "22");
@@ -21,7 +21,33 @@ namespace TreeProject
 
             Console.WriteLine(heap.ToString());
 
+            string returnValue = heap.RemoveMax();
 
+            Console.WriteLine($"Removed {returnValue}");
+
+            Console.WriteLine(heap.ToString());
+
+
+            List<string> returnedValues = new List<string>();
+            while (heap.Count > 0)
+            {
+                returnedValues.Add(heap.RemoveMax());
+            }
+
+            Console.WriteLine(String.Join(", ", returnedValues));
+
+            int n = 100;
+            Random r = new Random();
+            List<int> valuesToSort = new List<int>();
+
+            for (int i = 0; i < n; i++)
+            {
+                valuesToSort.Add(r.Next(0, 10000));
+            }
+
+            List<int> sortedValues = BinaryMaxHeap<int>.HeapSortDescending(valuesToSort);
+
+            Console.WriteLine(String.Join(", ", sortedValues));
 
 
             /*

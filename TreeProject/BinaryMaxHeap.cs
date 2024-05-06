@@ -76,7 +76,76 @@ namespace TreeProject
 
         public V RemoveMax()
         {
-            throw new NotImplementedException();
+            if (list.Count == 0)
+            {
+                throw new InvalidOperationException("You cannot remove from an empry heap!");
+            }
+
+            V returnValue = list[0].Value;
+
+            // copy the last element to position 0
+            list.Swap(0, list.Count - 1);
+            // list[0] = list[Count - 1]; // alternative method...
+
+            // remove the element that we want to return
+            list.RemoveAt(list.Count - 1); // RemoveElementAtRank
+
+            // perfom downheap (or BubbleDown) starting from the root (the place where I no longer have heap-order)
+            Downheap(0);
+
+            return returnValue;
+        }
+
+        private void Downheap(int index)
+        {
+            // Compare the value at index with the value at its children
+            // If any of the children are larger, swap the index with the LARGEST child (for Max Heap)
+
+            // Keep going until, we do not need to swap OR there are no children
+
+            int leftChildIndex = LeftChildIndex(index); // find the largest child
+            int largestChildIndex = int.MinValue;
+
+            if (leftChildIndex >= list.Count)
+            {
+                // leftChildIndex is outside of bounds
+                // this means that there is no left child (and therefore no right child)
+                // this means that index is a leaf node (no children to compare with)
+
+                // stopping condition! There are no children
+                return;
+            } else if (leftChildIndex == list.Count - 1)
+            {
+                // list.Count - 1 is the very last element
+                // since the heap is complete (i.e. filled left to right)
+                // the left is the last element, and therefore no right child!
+                largestChildIndex = leftChildIndex;
+            } else
+            {
+                // the index has BOTH children!
+                // find the largest child
+
+                int rightChildIndex = RightChildIndex(index);
+                if (list[leftChildIndex].Key > list[rightChildIndex].Key)
+                {
+                    largestChildIndex = leftChildIndex;
+                } else
+                {
+                    largestChildIndex = rightChildIndex;
+                }
+                // we found the index of the largest child!
+            }
+
+            if (list[index].Key < list[largestChildIndex].Key)
+            {
+                // the key is smaller than one of it's children
+                // Swap and continue Downheap
+                list.Swap(index, largestChildIndex);
+                Downheap(largestChildIndex);
+            }
+
+            // nothind else to do!
+            return;
         }
 
         public override string ToString()
@@ -98,6 +167,31 @@ namespace TreeProject
             sb.AppendLine("}");
 
             return sb.ToString();
+        }
+
+        public static List<int> HeapSortDescending(List<int> valuesToSort)
+        {
+            List<int> sortedResults = new List<int>(valuesToSort.Count);
+
+            BinaryMaxHeap<int> tempHeap = new BinaryMaxHeap<int>();
+
+            // repeat n times
+            for (int i = 0; i < valuesToSort.Count; i++)
+            {
+                // Add takes log(n) time (average)
+                tempHeap.Add(valuesToSort[i], valuesToSort[i]);
+            }
+
+            // repeat n times
+            while (tempHeap.Count > 0)
+            {
+                // RemoveMax takes log(n) time (average)
+                // assumed that append in an ArrayBasedVector takes O(1)
+                sortedResults.Add(tempHeap.RemoveMax());
+            }
+
+            // total time is n x log(n)
+            return sortedResults;
         }
     }
 }
