@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using VectorImplementations;
 
+LinkedList<int> t;
+
 /*
 Console.WriteLine("Array Based Vector");
 

@@ -7,13 +7,16 @@ using System.Xml.Linq;
 
 namespace VectorImplementations
 {
-    public class SinglyLinkedList<T> // : IVectorADT<T>
+    public class SinglyLinkedList<T> : IVectorADT<T>
     {
         Node<T>? head = null;
 
         Node<T>? tail = null;
 
         public int Size { get; private set; } = 0;
+
+        public bool IsEmpty 
+        { get { return (Size == 0); } }
 
         public void InsertFirst(T element)
         {
@@ -155,6 +158,52 @@ namespace VectorImplementations
 
         }
 
+        public T ElementAtRank(int rank)
+        {
+            if (rank < 0 || rank >= Size)
+            {
+                throw new IndexOutOfRangeException("rank does not exist...");
+            }
 
+            int currentIndex = 0;
+            Node<T>? currentNode = head;
+
+            while (currentIndex < rank)
+            {
+                if (currentNode == null)
+                {
+                    throw new IndexOutOfRangeException("index chosen is out of range");
+                }
+
+                // move forward 1 step
+                currentNode = currentNode.Next;
+                currentIndex++;
+            }
+
+            if (currentNode == null)
+            {
+                throw new IndexOutOfRangeException("index chosen is out of range");
+            }
+
+            // current node is the node at rank
+            return currentNode.Element;
+        }
+
+        public void InsertAtRank(int rank, T element)
+        {
+            // find the node at rank (rank - 1) - using a method similar to element at rank
+            // InsertAfter
+            throw new NotImplementedException();
+        }
+
+        public T ReplaceAtRank(int rank, T element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T RemoveAtRank(int rank)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
