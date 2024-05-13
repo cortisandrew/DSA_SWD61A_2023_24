@@ -142,21 +142,46 @@ namespace VectorImplementations
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// For the asymptotic analysis, I will assume that the value of rank is valid.
+        /// Case i) rank = size - 1
+        /// BEST CASE
+        /// T(n) = 4
+        /// T(n) = Theta(1)
+        /// 
+        /// Case ii) rank = 0
+        /// WORST CASE
+        /// T(n) = 4 + (n - 1) = n + 3
+        /// T(n) = Theta(n)
+        /// 
+        /// RemoveAtRank = O(n)
+        /// RemoveAtRank = Omega(1)
+        /// 
+        /// EXERCISE:
+        /// FindMax (The Art of Computer Programming Vol 1.)
+        /// </remarks>
         public T RemoveAtRank(int rank)
         {
+
             ValidateRange(rank, 0, size - 1, "rank", "The rank is outside of admissable range! You can only pass a rank between 0 and size - 1 (both inclusive)");
 
-            T removedValue = V[rank];
+            T removedValue = V[rank]; // 1
 
             for (int i = rank; i < size - 1; i++)
             {
-                V[i] = V[i + 1];
+                V[i] = V[i + 1];        // when rank is large, this line of code will not be executed
+                                        // when rank is 0, this line of code will be executed n - 1 times.
             }
 
-            V[size - 1] = default!;
+            V[size - 1] = default!; // 1
 
-            size--;
-            return removedValue;
+            size--; // 1
+            return removedValue; // 1
         }
 
         public override string ToString()

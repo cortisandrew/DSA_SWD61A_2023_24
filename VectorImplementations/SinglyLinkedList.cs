@@ -155,6 +155,49 @@ namespace VectorImplementations
 
         }
 
+        public T RemoveLast() {
+
+            if (head == null || tail == null)
+            {
+                // no elements!
+                throw new InvalidOperationException();
+            }
+
+            T elementToReturn = tail.Element;
+
+            Node<T>? cursor = head; // requires to find node before the tail
+
+            if (cursor == tail)
+            {
+                // there is only one element!
+                head = null;
+                tail = null;
+                Size--;
+                return elementToReturn;
+            }
+
+            // there is more than one element
+            while (cursor!.Next != tail) // cursor.Next.Next != null (an alternative if you don't have a tail)
+            {
+                // move forward
+                cursor = cursor.Next;
+            }
+
+            if (cursor == null)
+            {
+                // the tail is not in the list!
+                // something bad has a happened
+                throw new InvalidOperationException();
+            }
+
+            // cursor.Next is the tail
+            cursor.Next = null; // remove the tail
+            tail = cursor;
+
+            Size--;
+            return elementToReturn;
+        }
+
 
     }
 }
