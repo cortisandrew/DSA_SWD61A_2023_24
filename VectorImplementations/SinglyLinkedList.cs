@@ -174,6 +174,19 @@ namespace VectorImplementations
                 {
                     throw new IndexOutOfRangeException("index chosen is out of range");
                 }
+                // move forward 1 step
+                currentNode = currentNode.Next;
+                currentIndex++;
+            }
+
+            if (currentNode == null)
+            {
+                throw new IndexOutOfRangeException("index chosen is out of range");
+            }
+
+            // current node is the node at rank
+            return currentNode.Element;
+        }
 
         public T RemoveLast() {
 
@@ -216,20 +229,6 @@ namespace VectorImplementations
 
             Size--;
             return elementToReturn;
-        }
-
-                // move forward 1 step
-                currentNode = currentNode.Next;
-                currentIndex++;
-            }
-
-            if (currentNode == null)
-            {
-                throw new IndexOutOfRangeException("index chosen is out of range");
-            }
-
-            // current node is the node at rank
-            return currentNode.Element;
         }
 
         public void InsertAtRank(int rank, T element)
